@@ -22,8 +22,12 @@ namespace OrdensDeServico.Models
         [Column("valor_total")]
         public decimal ValorTotal { get; set; }
 
+        
+
         [Column("status")]
         public string Status { get; set; }
+        
+       
 
         [Column("cliente_id")]
         public int ClienteId { get; set; }

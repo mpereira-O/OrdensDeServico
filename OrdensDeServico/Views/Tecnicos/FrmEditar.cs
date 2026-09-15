@@ -25,19 +25,46 @@ namespace OrdensDeServico.Views.Tecnicos
         }
 
         private void CarregarCombos()
-        {
+        {   cbxStatus.Items.Clear();
+            cbxStatus.Items.Add("Pendente");
+            cbxStatus.Items.Add("Em Andamento");
+            cbxStatus.Items.Add("Concluído");
+            cbxStatus.Items.Add("Cancelado");
+
+            cbxOrdens.SelectedIndexChanged -= cbxOrdens_SelectecIndexChanged;
+            cbxOrdens.Format -= cbxOrdens_Format;
+            cbxOrdens.Format += cbxOrdens_Format;
+
             cbxOrdens.DataSource = presenter.BuscarServico("");
-            cbxOrdens.DisplayMember = "Ordem";
             cbxOrdens.ValueMember = "Id";
 
+            cbxOrdens.SelectedIndexChanged += cbxOrdens_SelectecIndexChanged;
         }
-
+        private void cbxOrdens_Format(object sender, ListControlConvertEventArgs e)
+        {
+            if (e.ListItem is OrdemServico ordem)
+            {
+                e.Value = $"{ordem.Id} - {ordem.DescricaoProblema}";
+            }
+        }
+        private void cbxOrdens_SelectecIndexChanged(object sender, EventArgs e)
+        {
+            AtualizarStatusOrdem();
+        }
+        private void AtualizarStatusOrdem()
+        {
+            if (cbxOrdens.SelectedItem is OrdemServico ordemSelecionada)
+            {
+                cbxStatus.SelectedItem = ordemSelecionada.Status;
+            }
+        }
         private void PreencherCampos()
         {
             if (tecnico != null)
             {
                 txtNome.Text = tecnico.Nome;
                 txtEspecialidade.Text = tecnico.Especialidade;
+                AtualizarStatusOrdem();
             }
         }
 
@@ -53,12 +80,14 @@ namespace OrdensDeServico.Views.Tecnicos
 
             if (presenter.Editar(tecnico))
             {
-                MessageBox.Show("Cliente atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tecnico atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Erro ao atualizar o cliente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao atualizar o tecnico.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -71,5 +100,11 @@ namespace OrdensDeServico.Views.Tecnicos
         {
 
         }
+
+        private void FrmEditar_Load(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

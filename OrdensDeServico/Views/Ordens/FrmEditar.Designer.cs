@@ -41,7 +41,7 @@ namespace OrdensDeServico.Views.Ordens
             lblCliente.AutoSize = true;
             lblCliente.Location = new Point(20, 15);
             lblCliente.Name = "lblCliente";
-            lblCliente.Size = new Size(47, 15);
+            lblCliente.Size = new Size(58, 20);
             lblCliente.TabIndex = 0;
             lblCliente.Text = "Cliente:";
             // 
@@ -50,7 +50,7 @@ namespace OrdensDeServico.Views.Ordens
             cbxCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxCliente.Location = new Point(20, 35);
             cbxCliente.Name = "cbxCliente";
-            cbxCliente.Size = new Size(300, 23);
+            cbxCliente.Size = new Size(300, 28);
             cbxCliente.TabIndex = 1;
             // 
             // lblTecnico
@@ -58,7 +58,7 @@ namespace OrdensDeServico.Views.Ordens
             lblTecnico.AutoSize = true;
             lblTecnico.Location = new Point(20, 70);
             lblTecnico.Name = "lblTecnico";
-            lblTecnico.Size = new Size(51, 15);
+            lblTecnico.Size = new Size(62, 20);
             lblTecnico.TabIndex = 2;
             lblTecnico.Text = "Técnico:";
             // 
@@ -67,7 +67,7 @@ namespace OrdensDeServico.Views.Ordens
             cbxTecnico.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxTecnico.Location = new Point(20, 90);
             cbxTecnico.Name = "cbxTecnico";
-            cbxTecnico.Size = new Size(300, 23);
+            cbxTecnico.Size = new Size(300, 28);
             cbxTecnico.TabIndex = 3;
             // 
             // lblDescricao
@@ -75,7 +75,7 @@ namespace OrdensDeServico.Views.Ordens
             lblDescricao.AutoSize = true;
             lblDescricao.Location = new Point(20, 125);
             lblDescricao.Name = "lblDescricao";
-            lblDescricao.Size = new Size(132, 15);
+            lblDescricao.Size = new Size(167, 20);
             lblDescricao.TabIndex = 4;
             lblDescricao.Text = "Descrição do Problema:";
             // 
@@ -92,7 +92,7 @@ namespace OrdensDeServico.Views.Ordens
             lblValor.AutoSize = true;
             lblValor.Location = new Point(190, 215);
             lblValor.Name = "lblValor";
-            lblValor.Size = new Size(89, 15);
+            lblValor.Size = new Size(114, 20);
             lblValor.TabIndex = 8;
             lblValor.Text = "Valor Total (R$):";
             // 
@@ -101,7 +101,7 @@ namespace OrdensDeServico.Views.Ordens
             lblStatus.AutoSize = true;
             lblStatus.Location = new Point(20, 215);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(42, 15);
+            lblStatus.Size = new Size(52, 20);
             lblStatus.TabIndex = 6;
             lblStatus.Text = "Status:";
             // 
@@ -111,7 +111,7 @@ namespace OrdensDeServico.Views.Ordens
             cbxStatus.Items.AddRange(new object[] { "Pendente", "Em Andamento", "Concluído", "Cancelado" });
             cbxStatus.Location = new Point(20, 235);
             cbxStatus.Name = "cbxStatus";
-            cbxStatus.Size = new Size(130, 23);
+            cbxStatus.Size = new Size(130, 28);
             cbxStatus.TabIndex = 7;
             // 
             // btnSalvar
@@ -130,7 +130,7 @@ namespace OrdensDeServico.Views.Ordens
             numValor.Location = new Point(190, 235);
             numValor.Maximum = new decimal(new int[] { 1241513984, 370409800, 542101, 0 });
             numValor.Name = "numValor";
-            numValor.Size = new Size(120, 23);
+            numValor.Size = new Size(120, 27);
             numValor.TabIndex = 11;
             numValor.TextAlign = HorizontalAlignment.Right;
             // 
@@ -152,6 +152,7 @@ namespace OrdensDeServico.Views.Ordens
             MaximizeBox = false;
             Name = "FrmEditar";
             StartPosition = FormStartPosition.CenterParent;
+            Load += FrmEditar_Load;
             ((System.ComponentModel.ISupportInitialize)numValor).EndInit();
             ResumeLayout(false);
             PerformLayout();

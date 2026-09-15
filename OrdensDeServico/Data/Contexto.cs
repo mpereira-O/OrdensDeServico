@@ -3,9 +3,13 @@ using OrdensDeServico.Models;
 using System;
 
 namespace OrdensDeServico.Data
-{
+{ 
     public class Contexto : DbContext
     {
+        public Contexto()
+        {
+           this.Database.EnsureCreated();
+        }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Tecnico> Tecnicos { get; set; }
         public DbSet<OrdemServico> OrdensServico { get; set; }

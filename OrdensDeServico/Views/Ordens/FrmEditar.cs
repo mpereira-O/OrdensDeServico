@@ -78,5 +78,9 @@ namespace OrdensDeServico.Views.Ordens
             }
         }
 
+        private void FrmEditar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

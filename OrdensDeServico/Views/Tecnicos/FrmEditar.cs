@@ -31,23 +31,23 @@ namespace OrdensDeServico.Views.Tecnicos
             cbxStatus.Items.Add("Concluído");
             cbxStatus.Items.Add("Cancelado");
 
-            cbxOrdens.SelectedIndexChanged -= cbxOrdens_SelectecIndexChanged;
-            cbxOrdens.Format -= cbxOrdens_Format;
-            cbxOrdens.Format += cbxOrdens_Format;
+            cbxOrdens.SelectedIndexChanged -= cbxOrdens_Selecao;
+            cbxOrdens.Format -= cbxOrdens_Formatada;
+            cbxOrdens.Format += cbxOrdens_Formatada;
 
             cbxOrdens.DataSource = presenter.BuscarServico("");
             cbxOrdens.ValueMember = "Id";
 
-            cbxOrdens.SelectedIndexChanged += cbxOrdens_SelectecIndexChanged;
+            cbxOrdens.SelectedIndexChanged += cbxOrdens_Selecao;
         }
-        private void cbxOrdens_Format(object sender, ListControlConvertEventArgs e)
+        private void cbxOrdens_Formatada(object sender, ListControlConvertEventArgs e)
         {
             if (e.ListItem is OrdemServico ordem)
             {
                 e.Value = $"{ordem.Id} - {ordem.DescricaoProblema}";
             }
         }
-        private void cbxOrdens_SelectecIndexChanged(object sender, EventArgs e)
+        private void cbxOrdens_Selecao(object sender, EventArgs e)
         {
             AtualizarStatusOrdem();
         }
